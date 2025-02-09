@@ -1,7 +1,7 @@
 class Codec() {
     val urlMap = HashMap<String, String>()
     val baseUrl ="http://tinyurl.com/"
-    var id=1
+
     // Encodes a URL to a shortened URL.
     fun encode(longUrl: String): String {
         var shortUrl = generateShortUrl()
