@@ -1,15 +1,21 @@
 1class Solution {
 2    fun groupAnagrams(strs: Array<String>): List<List<String>> {
-3        if (strs.isEmpty()) return emptyList()
-4        val map = mutableMapOf<String, MutableList<String>>()
-5
-6        for(i in strs){
-7            val key = i.toCharArray().sorted().joinToString("")
-8            if(!map.containsKey(key)){
-9                map[key]= mutableListOf<String>()
-10            }
-11            map[key]?.add(i)
-12        }
-13        return map.values.toList()
-14    }
-15}
+3        val map = HashMap<String, MutableList<String>>()
+4
+5        for(word in strs){
+6            val count = IntArray(26)
+7            for(char in word){
+8                count[char - 'a']++
+9            }
+10            val key = count.joinToString(",")
+11
+12            // if (!map.containsKey(key)) {
+13            //     map[key] = mutableListOf()
+14            // }
+15            // map[key]!!.add(word)
+16
+17            map.getOrPut(key){ mutableListOf() }.add(word)
+18        }
+19        return map.values.toList()
+20    }
+21}
