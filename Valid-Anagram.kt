@@ -1,17 +1,16 @@
 1class Solution {
 2    fun isAnagram(s: String, t: String): Boolean {
 3        if(s.length != t.length) return false
-4
-5        val map = HashMap<Char,Int>()
-6        for(char in s){
-7            map[char] = map.getOrDefault(char,0)+1
-8        }
-9
-10        for(char in t){
-11            var count = map.getOrDefault(char,0)
-12            if(count <1) return false
-13            map[char] = count -1
-14        }
-15        return true
-16    }
-17}
+4        val count = IntArray(26)
+5        for(char in s){
+6            count[char - 'a']++
+7        }
+8        for(char in t){
+9            count[char - 'a']--
+10        }
+11        for (num in count) {
+12        if (num != 0) return false
+13    }
+14    return true
+15    }
+16}
