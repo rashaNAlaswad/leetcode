@@ -1,13 +1,14 @@
 class Solution {
     fun pivotIndex(nums: IntArray): Int {
-        var totalSum = nums.sum()
+        val totalSum = nums.sum()
         var leftSum = 0
         for(i in nums.indices){
-            if(leftSum == totalSum - leftSum - nums[i]){
+            val rightSum = totalSum - leftSum - nums[i]
+            if(leftSum==rightSum){
                 return i
             }
             leftSum += nums[i]
         }
-       return -1 
+        return -1
     }
 }
