@@ -6,7 +6,7 @@ class Solution {
         var partIndex = 0
 
         for(i in 1 until nums.size){
-            currentMax = max(leftMax, nums[i])
+            currentMax = max(currentMax, nums[i])
             if(nums[i] < leftMax){
                 partIndex =i
                 leftMax = currentMax
